@@ -43,7 +43,7 @@ let user = {
 // }
 
 function deepFreeze(obj) {
-    frezzeIt(obj);
+
     Object.freeze(obj)
 
     function frezzeIt(obj1) {
@@ -56,10 +56,14 @@ function deepFreeze(obj) {
             }
         }
     }
+    frezzeIt(obj);
+
+    return obj;
 }
 
 
 deepFreeze(user)
+console.log(user)
 console.log(Object.isFrozen(user) === true)
 console.log(user.data)
 console.log(Object.isFrozen(user.data) === true)
